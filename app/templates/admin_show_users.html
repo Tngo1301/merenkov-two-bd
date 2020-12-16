@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Зарегестрированных пользователей в базе данных -  {{lenght}}:</h3>
+
+
+
+    {% for user in users %}
+        {% include '_user_admin.html' %}
+        Тип :{{user.status}}
+        <br><a href="{{ url_for('user', username=user.username) }}">Подробнее</a>
+    {% endfor %}
+
+    <h2>Удаление пользователя</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+         <p>{{ form.submit() }}</p>
+    </form>
+    <h2>Изменение баланса</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form3.username.label }}<br>
+            {{ form3.username(size=32) }}<br>
+            {% for error in form3.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form3.money.label }}<br>
+            {{ form3.money(size=32) }}<br>
+            {% for error in form3.money.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+         <p>{{ form3.submit_money() }}</p>
+    </form>
+<form action="" method="post">
+        {{ form2.hidden_tag() }}
+<p>{{ form2.submit_all() }}</p>
+    </form>
+{% endblock %}
+

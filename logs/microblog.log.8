@@ -1,0 +1,109 @@
+2019-11-02 15:57:18,588 ERROR: Exception on /admin_show_posts [GET] [in c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "G:\new_microblog\microblog\app\routes.py", line 201, in admin_show_posts
+    return render_template('admin_show_posts.html', user=user, posts=posts,lenght=len(Post.query.all()))
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\loaders.py", line 125, in load
+    code = environment.compile(source, name, filename)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\environment.py", line 591, in compile
+    self.handle_exception(exc_info, source_hint=source_hint)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "G:\new_microblog\microblog\app\templates\admin_show_posts.html", line 5, in template
+    <h3>«арегестрированные игры в базе данных {%lenght%}:</h3>
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 144, in parse_statement
+    self.fail_unknown_tag(token.value, token.lineno)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 97, in fail_unknown_tag
+    return self._fail_ut_eof(name, self._end_token_stack, lineno)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 90, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\jinja2\parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'lenght'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2019-11-02 15:57:30,423 INFO: Microblog startup [in G:\new_microblog\microblog\app\__init__.py:36]
+2019-11-02 16:16:43,226 INFO: Microblog startup [in G:\new_microblog\microblog\app\__init__.py:36]
+2019-11-02 16:25:32,365 INFO: Microblog startup [in G:\new_microblog\microblog\app\__init__.py:36]
+2019-11-02 16:25:34,952 ERROR: Exception on /admin_show_posts [GET] [in c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2019-11-02 16:26:25,205 INFO: Microblog startup [in G:\new_microblog\microblog\app\__init__.py:36]
+2019-11-02 16:26:26,636 ERROR: Exception on /admin_show_posts [GET] [in c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2019-11-02 16:27:46,705 INFO: Microblog startup [in G:\new_microblog\microblog\app\__init__.py:36]
+2019-11-02 16:27:48,636 ERROR: Exception on /admin_show_posts [GET] [in c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2019-11-02 16:27:49,471 ERROR: Exception on /admin_show_posts [GET] [in c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "c:\users\gembelton\pycharmprojects\untitled6\venv\lib\site-packages\flask\app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2019-11-02 16:28:20,843 INFO: Microblog startup [in G:\new_microblog\microblog\app\__init__.py:36]

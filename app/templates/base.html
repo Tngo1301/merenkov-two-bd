@@ -1,0 +1,67 @@
+{% extends 'bootstrap/base.html' %}
+<html>
+<body>
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+    {{ moment.lang('ru') }}
+{% endblock %}
+{%if current_user.status == 'Admin'%}
+    {%include "admin_options.html" %}
+    {%endif%}
+{% block navbar %}
+<nav class="navbar navbar-default">
+        {% if current_user.is_anonymous %}
+        <!--Если пользователь зашел в систему без регистрации -->
+        <a href="{{ url_for('login') }}"><font size="3" face="Arial">Логин / </font></a>
+        {% endif %}
+        {% if not current_user.is_anonymous %}
+    <table>
+    <tr valign="top">
+    <td><img src="{{ current_user.avatar(70) }}"></td>
+        <td>Вы - {{current_user.username}}
+        {%if not current_user.balance or current_user.balance == '0'%}<br> у вас нет баланса обратитесь к админу
+            чтобы{%else%}<br>Баланс {{current_user.balance}}.00 Руб.{%endif%}
+            <a href="{{ url_for('add_to_balance') }}">  пополнить счет</a>
+        <a href="{{ url_for('user', username=current_user.username) }}"><br>личный кабинет</a>
+            <a href="{{ url_for('logout') }}"><br>Выход</a></td>
+        {% endif %}
+    </tr>
+    </table>
+            {% if not current_user.is_anonymous %}
+        {% if not current_user.status =='Admin'%}
+    <a href="{{ url_for('get_admin') }}"><font size="3" face="Arial">Админка / </font></a>
+        {%endif%}
+        {%endif%}
+    <a href="{{ url_for('homePage') }} ">
+        <font size="3" face="Arial">Каталог </font>
+    </a>
+</nav>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+{% endblock %}
+
+    <!--БЛОК КОНТЕНТ -->
+    {% block content %}
+<div>
+
+    <h2>Магазин видеоигр</h2>
+    <div>
+        {%if not posts%}
+        Магазин временно пуст.
+        {%endif%}
+        {% for post in posts %}
+        {% include '_game.html' %}
+        {% endfor %}
+
+    </div>
+    {% endblock %}
+</div>
+</body>
+
+</html>

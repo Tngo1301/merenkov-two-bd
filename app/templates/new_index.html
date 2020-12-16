@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+<!-- Наследует основу из baze.html и добавляет в этой форме
+ в block content то, что находится в этом файле-->
+{% block content %}
+<h3>Спасибо {{ current_user.username }}! за приобретение игры </h3>
+
+    <a href="{{ url_for('homePage') }} ">
+        <font size="3" face="Arial">Вернуться </font>
+    </a>
+{% endblock %}

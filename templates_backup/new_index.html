@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+<!-- Наследует основу из baze.html и добавляет в этой форме
+ в block content то, что находится в этом файле-->
+{% block content %}
+<h2>Спасибо {{ current_user.username }}! за приобретение игры </h2>
+{% endblock %}

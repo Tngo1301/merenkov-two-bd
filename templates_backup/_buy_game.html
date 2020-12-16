@@ -1,0 +1,9 @@
+<table>
+        <tr valign="top">
+            <td><img src="{{ post.avatar(50) }}"></td>
+            <td>Название: {{ post.name }}
+                <br>Жанр: {{ post.janre }}
+                <br><a href="{{ url_for('gamePage', name=post.name) }}">Подробнее</a>
+                </td>
+        </tr>
+    </table>

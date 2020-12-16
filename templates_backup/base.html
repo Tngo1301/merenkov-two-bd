@@ -1,0 +1,82 @@
+
+<html>
+<head>
+    {% if title %}
+    <title>{{ title }} - Microblog</title>
+    {% else %}
+    <title>Welcome to Microblog</title>
+    {% endif %}
+</head>
+<body>
+{%if current_user.status == 'Admin'%}{%include "admin_options.html" %}{%endif%}
+
+<!-- ссылка, которая перенаправляет на указаную страницу ниже   -->
+<div>
+
+
+    <p></p>
+    Войти в каталог
+    <a href="{{ url_for('homePage') }}">видеоигр</a>
+
+
+
+<div>
+    {% if current_user.is_anonymous %}
+    <!--Если пользователь зашел в систему без регистрации -->
+    Войти в
+    <a href="{{ url_for('login') }}">Систему</a>
+    {% endif %}
+</div>
+
+<div>
+    {% if not current_user.is_anonymous %}
+    {% if not current_user.status =='Admin'%}
+        <a href="{{ url_for('get_admin') }}">админка</a>
+    {%endif%}
+
+    <br>пользователь - {{current_user.username}}
+        <div>{%if not current_user.balance  or current_user.balance == '0'%} У вас нет баланса обратитесь к админу чтобы{%else%}Баланс {{current_user.balance}}{%endif%}
+            <a href="{{ url_for('add_to_balance') }}">пополнить счет</a> </div>
+    Войти в
+    <a href="{{ url_for('user', username=current_user.username) }}">личный кабинет</a>
+    <div>Выйти из
+    <a href="{{ url_for('logout') }}">аккаунта</a></div>
+    <p></p>
+    {% endif %}
+</div>
+
+
+
+<hr>
+<!-- читает все что закинули в .py файлах в функцию флеш, и кидает их на форму ( все)   -->
+
+<hr>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+
+<!--БЛОК КОНТЕНТ -->
+{% block content %}
+
+<h2>Магазин видеоигр</h2>
+<div>
+         {%if not posts%}
+    Магазин временно пуст.
+    {%endif%}
+    {% for post in posts %}
+        {% include '_game.html' %}
+    {% endfor %}
+
+</div>
+{% endblock %}
+
+</body>
+
+</html>

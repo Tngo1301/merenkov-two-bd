@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Зарегистрированных игр в базе данных -  {{lenght}}:</h3>
+
+
+
+    {% for post in posts %}
+        {% include '_game.html' %}
+    {% endfor %}
+    <h2>Удаление игры</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}<br>
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+         <p>{{ form.submit() }}</p>
+
+    </form>
+<form action="" method="post">
+        {{ form2.hidden_tag() }}
+<p>{{ form2.submit_all() }}</p>
+    </form>
+Примечание: все что удаляется, также удаляется и из библиотек пользователей
+{% endblock %}
+

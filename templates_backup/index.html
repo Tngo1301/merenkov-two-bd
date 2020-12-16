@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+<!-- Наследует основу из baze.html и добавляет в этой форме
+ в block content то, что находится в этом файле-->
+{% block content %}
+
+<h1>Здравстуйте, {{ current_user.username }}!</h1>
+
+<!--хз что этот делает-->
+{% for post in posts %}
+<div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+{% endfor %}
+Посетите наш <a href="{{ url_for('homePage') }}">каталог игр</a>
+
+{% endblock %}

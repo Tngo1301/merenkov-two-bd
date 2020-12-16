@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table>
+    <tr valign="top">
+
+    </tr>
+</table>
+<table>
+    <tr valign="top">
+        <h2>Название: {{ post. name }}</h2>
+        <td><img src="{{ post.avatar(150) }}"></td>
+        <td>
+
+            {% if post.body %}Описание: {{ post.body }}{% endif %}
+            <p>Жанр: {{ post.janre }}</p>
+            <p>Возрастной рейтинг: {{ post.pegi }}</p>
+        </td>
+    </tr>
+</table>
+Дата регистрации в магазине: {{post.timestamp.date()}}
+{% if post.cost %}<p>цена: {{ post.cost }}</p>
+<form action="" method="post">
+    {% if current_user.is_anonymous %}<p>
+   Войдите в <a href="{{ url_for('login') }}">аккаунт</a> чтобы купить и добавить игру в библиотеку</p>
+<p>Нет аккаунта? <a href="{{ url_for('register') }}">Регистрация</a>
+</p>{% else %}<p></p>{% endif %}
+    {% if not current_user.is_anonymous %}<p>
+    <p>{{ form2.submit_2() }}</p>
+    {% endif %}
+    </form>
+{% else %}
+<p>Игра бесплатная</p>
+<form action="" method="post">
+    {% if not current_user.is_anonymous %}<p>
+    <p>{{ form.submit_1() }}</p>
+    {% endif %}
+    </form>
+{% if current_user.is_anonymous %}<p>
+   Войдите в <a href="{{ url_for('login') }}"> аккаунт</a>  чтобы добавить игру в библиотеку</p>
+<p>Нет аккаунта? <a href="{{ url_for('register') }}">Регистрация</a>
+</p>{% else %}<p></p>{% endif %}{% endif %}
+
+
+
+
+{% endblock %}
+

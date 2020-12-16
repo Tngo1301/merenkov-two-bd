@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h4>Для подробной информации о получении прав администратора писать на Gembeltonwork@gmail.com</h4>
+    <form action="" method="post">
+        <p>
+            {{ form.admin_key.label }}<br>
+            {{ form.admin_key(size=30) }}<br>
+            {% for error in form.admin_key.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+{%endblock%}

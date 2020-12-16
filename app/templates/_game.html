@@ -1,0 +1,15 @@
+<table>
+        <tr valign="top">
+            <td><img src="{{ post.avatar(80) }}"></td>
+            <td>Название: {{ post.name }}
+                <br>Жанр: {{ post.janre }}
+                <br>возрастное ограничение: {{ post.pegi }}
+                <br>{% if not post.cost or post.cost == 0 %}
+                    бесплатно
+                {%else%}
+                    цена: {{ post.cost }}
+                {% endif %}
+            <br><a href="{{ url_for('gamePage', name=post.name) }}">Подробнее</a></td>
+
+        </tr>
+    </table>
